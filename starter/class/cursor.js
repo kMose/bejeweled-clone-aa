@@ -16,26 +16,61 @@ class Cursor {
 
   resetBackgroundColor() {
     Screen.setBackgroundColor(this.row, this.col, this.gridColor);
+    Screen.render();
   }
 
   setBackgroundColor() {
     Screen.setBackgroundColor(this.row, this.col, this.cursorColor);
+    Screen.render();
   }
 
-  up() {
-    // Move cursor up
+  up = () => {
+
+    if(this.row == 0){
+      this.setBackgroundColor()
+    } else {
+      this.resetBackgroundColor();
+      this.row -= 1;
+      //console.log(`${this.row} ${this.col}`)
+      this.setBackgroundColor();
+    }
   }
 
-  down() {
-    // Move cursor down
+  down = () => {
+
+    if(this.row == this.numRows - 1){
+      this.setBackgroundColor()
+    } else {
+      this.resetBackgroundColor();
+      this.row += 1;
+      //console.log(`${this.row} ${this.col}`)
+      this.setBackgroundColor();
+    }
   }
 
-  left() {
-    // Move cursor left
+  left = () => {
+
+    if(this.col == 0){
+      this.setBackgroundColor()
+    } else {
+      this.resetBackgroundColor();
+      this.col -= 1;
+      //console.log(`${this.row} ${this.col}`)
+      this.setBackgroundColor();
+    }
   }
 
-  right() {
-    // Move cursor right
+  right = () => {
+
+    if(this.col == this.numCols-1){
+      this.setBackgroundColor()
+    } else {
+      this.resetBackgroundColor();
+      this.col += 1;
+      //console.log(`${this.row} ${this.col}`)
+      this.setBackgroundColor();
+    }
+
   }
 
 }
